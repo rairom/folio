@@ -1,1 +1,17 @@
+{
+    "id": "app-remote-sync",
+    "name": "app-remote-sync",
+    "version": "0.0.11-SNAPSHOT",
+    "description": "Remote sync installation",
+    "platform": "base",
+    "modules": [
+        {
+            "id": "mod-remote-sync-2.2.0",
+            "name": "mod-remote-sync",
+            "version": "2.2.0",
+            "url": "https://folio-registry.dev.folio.org/_/proxy/modules/mod-xyz-5.12.0"
+        }
+    ]
+}
+
 
