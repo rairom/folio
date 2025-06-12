@@ -1,0 +1,205 @@
+{
+  "id": "mod-remote-sync-2.2.0-SNAPSHOT",
+  "name": "mod-remote-sync",
+  "provides": [
+    {
+      "id": "remote-sync",
+      "version": "2.2",
+      "handlers" : [
+        {
+          "methods": [ "GET" ],
+          "pathPattern": "/remote-sync/statusReport",
+          "permissionsRequired": [ "remote-sync.statusReport.get" ]
+        },
+        {
+          "methods": [ "GET" ],
+          "pathPattern": "/remote-sync/extendedStatusReport",
+          "permissionsRequired": [ "remote-sync.statusReport.get" ]
+        },
+        {
+          "methods": [ "GET" ],
+          "pathPattern": "/remote-sync/crosswalks",
+          "permissionsRequired": [ "remote-sync.settings.get" ]
+        },
+        {
+          "methods": [ "GET" ],
+          "pathPattern": "/remote-sync/settings*",
+          "permissionsRequired": [ "remote-sync.settings.get" ]
+        },
+        {
+          "methods": [ "POST" ],
+          "pathPattern": "/remote-sync/settings*",
+          "permissionsRequired": [ "remote-sync.settings.post" ]
+        },
+        {
+          "methods": [ "PUT" ],
+          "pathPattern": "/remote-sync/settings*",
+          "permissionsRequired": [ "remote-sync.settings.put" ]
+        },
+        {
+          "methods": [ "DELETE" ],
+          "pathPattern": "/remote-sync/settings*",
+          "permissionsRequired": [ "remote-sync.settings.delete" ]
+        },
+
+        {
+          "methods": ["GET"],
+          "pathPattern": "/remote-sync/refdata",
+          "permissionsRequired": [ "remote-sync.refdata.collection.get" ]
+        },{
+          "methods": ["GET"],
+          "pathPattern": "/remote-sync/refdata/{domain}/{property}",
+          "permissionsRequired": [ "remote-sync.refdata.collection.get" ]
+        },{
+          "methods": ["GET"],
+          "pathPattern": "/remote-sync/refdata/{id}",
+          "permissionsRequired": [ "remote-sync.refdata.item.get" ]
+        },{
+          "methods": ["POST"],
+          "pathPattern": "/remote-sync/refdata",
+          "permissionsRequired": [ "remote-sync.refdata.item.post" ]
+        },{
+          "methods": ["PUT"],
+          "pathPattern": "/remote-sync/refdata/{id}",
+          "permissionsRequired": [ "remote-sync.refdata.item.put" ]
+        },{
+          "methods": ["DELETE"],
+          "pathPattern": "/remote-sync/refdata/{id}",
+          "permissionsRequired": [ "remote-sync.refdata.item.delete" ]
+        },
+
+        { "methods": ["GET"], "pathPattern": "/remote-sync/feedback",      "permissionsRequired": [ "remote-sync.feedback.collection.get" ] },
+        { "methods": ["GET"], "pathPattern": "/remote-sync/feedback/{id}", "permissionsRequired": [ "remote-sync.feedback.item.get" ] },
+        { "methods": ["GET"], "pathPattern": "/remote-sync/feedback/todo", "permissionsRequired": [ "remote-sync.feedback.collection.get" ] },
+        { "methods": ["GET"], "pathPattern": "/remote-sync/feedback/done", "permissionsRequired": [ "remote-sync.feedback.collection.get" ] },
+        { "methods": ["POST"], "pathPattern": "/remote-sync/feedback", "permissionsRequired": [ "remote-sync.feedback.item.post" ] },
+        {
+          "methods": ["PUT"],
+          "pathPattern": "/remote-sync/feedback/{id}",
+          "permissionsRequired": [ "remote-sync.feedback.item.put" ]
+        },{
+          "methods": ["DELETE"],
+          "pathPattern": "/remote-sync/feedback/{id}",
+          "permissionsRequired": [ "remote-sync.feedback.item.delete" ]
+        },
+
+        {
+          "methods": ["GET"],
+          "pathPattern": "/remote-sync/records",
+          "permissionsRequired": [ "remote-sync.records.collection.get" ]
+        },{
+          "methods": ["GET"],
+          "pathPattern": "/remote-sync/records/{id}",
+          "permissionsRequired": [ "remote-sync.records.item.get" ]
+        },{
+          "methods": ["POST"],
+          "pathPattern": "/remote-sync/feedback",
+          "permissionsRequired": [ "remote-sync.records.item.post" ]
+        },{
+          "methods": ["PUT"],      
+          "pathPattern": "/remote-sync/records/{id}",
+          "permissionsRequired": [ "remote-sync.records.item.put" ]
+        },{
+          "methods": ["DELETE"],
+          "pathPattern": "/remote-sync/records/{id}",
+          "permissionsRequired": [ "remote-sync.records.item.delete" ]
+        },
+        {
+          "methods": ["GET"],
+          "pathPattern": "/remote-sync/sourceRecords",
+          "permissionsRequired": [ "remote-sync.records.collection.get" ]
+        }
+      ]
+    },
+    {
+      "id": "_tenant",
+      "version": "1.2",
+      "interfaceType" : "system",
+      "handlers": [
+        {
+          "permissionsRequired" : [],
+          "methods": ["POST", "DELETE"],
+          "pathPattern": "/_/tenant"
+        }, {
+         "permissionsRequired" : [],
+         "methods" : [ "POST" ],
+         "pathPattern" : "/_/tenant/disable"
+        }
+
+      ]
+    }, {
+      "id": "_timer",
+      "version": "1.0",
+      "interfaceType": "system",
+      "handlers": [
+        {
+          "methods": [ "POST" ],
+          "pathPattern": "/remote-sync/settings/worker",
+          "unit": "minute",
+          "delay": "60",
+          "modulePermissions": [
+            "configuration.entries.item.get",
+            "configuration.entries.collection.get"
+          ]
+        }
+      ]
+    }
+
+  ],
+  "permissionSets": [
+    { "permissionName": "remote-sync.settings.get", "displayName": "settings get", "description": "get settings", "visible": false }, 
+    { "permissionName": "remote-sync.settings.post", "displayName": "settings post", "description": "post settings", "visible": false }, 
+    { "permissionName": "remote-sync.settings.put", "displayName": "settings put", "description": "put settings", "visible": false }, 
+    { "permissionName": "remote-sync.settings.delete", "displayName": "settings delete", "description": "delete settings", "visible": false },
+    { "permissionName": "remote-sync.settings.read", "displayName": "settings read", "description": "read settings", "visible": false, 
+        "subPermissions": [ "remote-sync.settings.get" ] }, 
+    { "permissionName": "remote-sync.statusReport.get", "displayName": "Status Report Get", "description": "get statusReport", "visible": false },
+    { "permissionName": "remote-sync.statusReport.read", "displayName": "Status Report Read", "description": "read statusReport", "visible": false, 
+      "subPermissions": [ "remote-sync.statusReport.get" ] },
+    { "permissionName": "remote-sync.settings.write", "displayName": "settings write", "description": "write settings", "visible": false,
+        "subPermissions": [ "remote-sync.settings.read", "remote-sync.settings.post", "remote-sync.settings.put", "remote-sync.settings.delete" ] },
+    { "permissionName": "remote-sync.refdata.collection.get", "displayName": "Refdata collection get", "description": "Get a collection of refdata records" },
+    { "permissionName": "remote-sync.refdata.item.get", "displayName": "Refdata item get", "description": "Get refdata record" },
+    { "permissionName": "remote-sync.refdata.view", "subPermissions": [ "remote-sync.refdata.collection.get", "remote-sync.refdata.item.get" ] },
+    { "permissionName": "remote-sync.refdata.item.post", "displayName": "Refdata item post", "description": "Post refdata record" },
+    { "permissionName": "remote-sync.refdata.item.put", "displayName": "Refdata item put", "description": "Put refdata record" },
+    { "permissionName": "remote-sync.refdata.edit", "subPermissions": [ "remote-sync.refdata.view", "remote-sync.refdata.item.post", "remote-sync.refdata.item.put" ] },
+    { "permissionName": "remote-sync.refdata.item.delete", "displayName": "Refdata item delete", "description": "Delete refdata record" },
+    { "permissionName": "remote-sync.refdata.manage", "subPermissions": [ "remote-sync.refdata.edit", "remote-sync.refdata.collection.get", "remote-sync.refdata.item.view" ] },
+
+    { "permissionName": "remote-sync.feedback.collection.get", "displayName": "Feedback collection get", "description": "Get a collection of feedback records" },
+    { "permissionName": "remote-sync.feedback.item.get", "displayName": "Feedback item get", "description": "Get feedback record" },
+    { "permissionName": "remote-sync.feedback.view", 
+        "subPermissions": [ "remote-sync.feedback.collection.get", "remote-sync.feedback.item.get" ] },
+    { "permissionName": "remote-sync.feedback.item.post", "displayName": "Feedback item post", "description": "Post feedback record" },
+    { "permissionName": "remote-sync.feedback.item.put", "displayName": "Feedback item put", "description": "Put feedback record" },
+    { "permissionName": "remote-sync.feedback.edit", 
+      "subPermissions": [ "remote-sync.feedback.view", "remote-sync.feedback.item.post", "remote-sync.feedback.item.put" ] },
+    { "permissionName": "remote-sync.feedback.item.delete", "displayName": "Feedback item delete", "description": "Delete feedback record" },
+    { "permissionName": "remote-sync.feedback.manage", 
+        "subPermissions": [ "remote-sync.feedback.edit", "remote-sync.feedback.collection.get", "remote-sync.feedback.item.view" ] },
+
+    { "permissionName": "remote-sync.records.collection.get", "displayName": "Records collection get", "description": "Get a collection of import records" },
+    { "permissionName": "remote-sync.records.item.get", "displayName": "Records item get", "description": "Get import record" },
+    { "permissionName": "remote-sync.records.view", 
+        "subPermissions": [ "remote-sync.records.collection.get", "remote-sync.records.item.get" ] },
+    { "permissionName": "remote-sync.records.item.post", "displayName": "Records item post", "description": "Post import record" },
+    { "permissionName": "remote-sync.records.item.put", "displayName": "Records item put", "description": "Put import record" },
+    { "permissionName": "remote-sync.records.edit", 
+        "subPermissions": [ "remote-sync.records.view", "remote-sync.records.item.post", "remote-sync.records.item.put" ] },
+    { "permissionName": "remote-sync.records.item.delete", "displayName": "Records item delete", "description": "Delete import record" },
+    { "permissionName": "remote-sync.records.manage", 
+        "subPermissions": [ "remote-sync.records.edit", "remote-sync.records.collection.get", "remote-sync.records.item.view" ] }
+
+  ],
+  "launchDescriptor": {
+    "dockerImage": "mod-remote-sync:2.2.0-SNAPSHOT",
+    "dockerArgs": {
+      "HostConfig": { "PortBindings": { "8080/tcp":  [{ "HostPort": "%p" }] } }
+    },
+    "env": [
+      { "name": "JAVA_OPTIONS", "value": "-server -XX:+UseContainerSupport -XX:MaxRAMPercentage=55.0 -XX:+PrintFlagsFinal" }
+    ],
+    "dockerPull" : false
+  }
+}
