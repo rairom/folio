@@ -1,0 +1,10 @@
+{
+    "discovery": [
+        {
+            "id": "mod-remote-sync-2.2.0",
+            "name": "mod-remote-sync",
+            "version": "2.2.0",
+            "location": "http://sc-remote-sync:8081"
+        }
+    ]
+}
