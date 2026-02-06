@@ -1,0 +1,7 @@
+{
+  "srvcId": "mod-laser-sync-1.0.0-SNAPSHOT",
+  "nodeId": "localhost",
+  "descriptor": {
+    "exec": "java -Dport=%p -jar ../mod-laser-sync/target/mod-laser-sync.jar -Dhttp.port=%p"
+  }
+}
